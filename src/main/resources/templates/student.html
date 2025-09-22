@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Student Data</title>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+body {
+  background: linear-gradient(135deg, #74ebd5, #ACB6E5);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+div[align="center"] {
+  background: #fff;
+  padding: 40px 50px;
+  border-radius: 15px;
+  box-shadow: 0px 8px 20px rgba(0,0,0,0.15);
+  text-align: center;
+  width: 80%;
+  max-width: 900px;
+}
+h1 {
+  color: #2c3e50;
+  margin-bottom: 25px;
+  font-size: 28px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+th, td {
+  padding: 12px 15px;
+  text-align: center;
+  border: 1px solid #ddd;
+}
+th {
+  background: #3498db;
+  color: white;
+  font-size: 16px;
+}
+tr:nth-child(even) {
+  background: #f9f9f9;
+}
+tr:hover {
+  background: #f1f7ff;
+}
+a button {
+  background: #3498db;
+  border: none;
+  color: #fff;
+  padding: 8px 15px;
+  margin: 3px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+a button:hover {
+  background: #2980b9;
+  transform: scale(1.05);
+  box-shadow: 0px 4px 12px rgba(0,0,0,0.2);
+}
+a[href="/"] button {
+  background: #27ae60;
+}
+a[href="/"] button:hover {
+  background: #1e8449;
+}
+</style>
+</head>
+<body>
+  <div align="center">
+    <h1>Student Data</h1>
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Address</th>
+        <th>Education</th>
+        <th>Phone No</th>
+        <th>Actions</th>
+      </tr>
+      <tr th:each="s : ${stu}">
+        <td th:text="${s.name}"></td>
+        <td th:text="${s.Address}"></td>
+        <td th:text="${s.Education}"></td>
+        <td th:text="${s.Phone_num}"></td>
+        <td>
+          <a th:href ="'/edit?id='+${s.id}"><button>Edit</button></a>
+          <a th:href="'/delete?id='+${s.id}"><button>Delete</button></a>
+        </td>
+      </tr>
+    </table>
+    <a href="/"><button>Back</button></a>
+  </div>
+</body>
+</html>
